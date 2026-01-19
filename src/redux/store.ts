@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
-import alphaKeysReducer from './slices/alphaKeysSlice';
+import keyboardReducer from './slices/keyboardSlice';
 
 export const store = configureStore({
   reducer: {
-    alphaKeys: alphaKeysReducer
+    keyboard: keyboardReducer
   }
 })
 

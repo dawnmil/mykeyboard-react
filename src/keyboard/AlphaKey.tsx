@@ -1,14 +1,14 @@
 import { Button } from '@mui/material';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { selectAlphaKeys, shiftLower, shiftUpper } from '../redux/slices/alphaKeysSlice';
+import { selectKeyboard, shiftLower, shiftUpper } from '../redux/slices/keyboardSlice';
 
-type KeyProps = {
+type AlphaKeyProps = {
     value: string;
 }
 
-function Key({value}: KeyProps) {
-  const { capitalized } = useAppSelector(selectAlphaKeys);
+function AlphaKey({value}: AlphaKeyProps) {
+  const { capitalized } = useAppSelector(selectKeyboard);
   const audio = new Audio(`/audio/${value.toLowerCase()}.m4a`);
   const dispatch = useAppDispatch();
 
@@ -20,8 +20,13 @@ function Key({value}: KeyProps) {
     }
   }
   return (
-    <Button onClick={handleClick} variant="contained" sx={{ textTransform: 'none'}}>{value}</Button>
+    <Button 
+      onClick={handleClick} 
+      variant="contained" 
+      sx={{ 
+        textTransform: 'none'
+      }}>{value}</Button>
   );
 }
 
-export default Key;
+export default AlphaKey;

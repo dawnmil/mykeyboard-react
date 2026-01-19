@@ -5,9 +5,7 @@ import Keyboard from './keyboard/Keyboard';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Keyboard />
-      </header>
+      <Keyboard />
     </div>
   );
 }

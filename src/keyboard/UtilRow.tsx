@@ -1,19 +1,19 @@
 import { Stack } from '@mui/material';
 import React from 'react';
-import Key from './Key';
+import UtilKey from './UtilKey';
 
-type KeysRowProps = {
+type UtilRowProps = {
     keyValues: string[];
 }
 
-function KeysRow({keyValues}: KeysRowProps) {
+function UtilRow({keyValues}: UtilRowProps) {
   return (
     <Stack direction="row" justifyContent="center" spacing={1}>
         {keyValues.map(keyValue => (
-            <Key value={keyValue} />
+            <UtilKey value={keyValue} />
         ))}
     </Stack>
   );
 }
 
-export default KeysRow;
+export default UtilRow;

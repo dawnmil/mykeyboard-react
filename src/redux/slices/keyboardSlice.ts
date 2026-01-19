@@ -5,11 +5,12 @@ const initialState = {
   capitalized: false,
   topKeys: ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
   middleKeys: ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
-  bottomKeys: ["z", "x", "c", "v", "b", "n", "m"]
+  bottomKeys: ["z", "x", "c", "v", "b", "n", "m"],
+  utilKeys: ["shift"]
 };
 
-export const alphaKeysSlice = createSlice({
-  name: 'alphaKeys',
+export const keyboardSlice = createSlice({
+  name: 'keyboard',
   initialState,
   reducers: {
     shiftUpper: state => {
@@ -33,8 +34,8 @@ export const alphaKeysSlice = createSlice({
   }
 })
 
-export const { shiftUpper, shiftLower } = alphaKeysSlice.actions
+export const { shiftUpper, shiftLower } = keyboardSlice.actions
 
-export const selectAlphaKeys = (state: RootState) => state.alphaKeys
+export const selectKeyboard = (state: RootState) => state.keyboard
 
-export default alphaKeysSlice.reducer
+export default keyboardSlice.reducer

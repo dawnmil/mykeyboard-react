@@ -1,20 +1,19 @@
 import { Box, Stack } from '@mui/material';
 import React from 'react';
-import KeysRow from './KeysRow';
-import { selectAlphaKeys } from '../redux/slices/alphaKeysSlice';
+import AlphaRow from './AlphaRow';
+import { selectKeyboard } from '../redux/slices/keyboardSlice';
 import { useAppSelector } from '../redux/hooks';
-
-const utilRow = ["shift"];
+import UtilRow from './UtilRow';
 
 function Keyboard() {
-  const {topKeys, middleKeys, bottomKeys } = useAppSelector(selectAlphaKeys)
+  const {topKeys, middleKeys, bottomKeys, utilKeys } = useAppSelector(selectKeyboard)
   return (
     <Box>
         <Stack direction="column" spacing={1}>
-            <KeysRow keyValues={topKeys} />
-            <KeysRow keyValues={middleKeys} />
-            <KeysRow keyValues={bottomKeys} />
-            <KeysRow keyValues={utilRow} />
+            <AlphaRow keyValues={topKeys} />
+            <AlphaRow keyValues={middleKeys} />
+            <AlphaRow keyValues={bottomKeys} />
+            <UtilRow keyValues={utilKeys} />
         </Stack>
     </Box>
   );
