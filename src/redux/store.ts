@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import keyboardReducer from './slices/keyboardSlice';
+import displayReducer from './slices/displaySlice';
 
 export const store = configureStore({
   reducer: {
-    keyboard: keyboardReducer
+    keyboard: keyboardReducer,
+    display: displayReducer
   }
 })
 

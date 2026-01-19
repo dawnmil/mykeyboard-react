@@ -1,7 +1,8 @@
-import { ToggleButton } from '@mui/material';
+import { Button, ToggleButton } from '@mui/material';
 import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { selectKeyboard, shiftLower, shiftUpper } from '../redux/slices/keyboardSlice';
+import { setLetter } from '../redux/slices/displaySlice';
 
 type UtilKeyProps = {
     value: string;
@@ -12,10 +13,14 @@ function UtilKey({value}: UtilKeyProps) {
   const { capitalized } = useAppSelector(selectKeyboard);
   const dispatch = useAppDispatch();
 
-  const handleShiftClick = () => {
+  const handleShift = () => {
     capitalized 
       ? dispatch(shiftLower()) && setSelected(false) 
       : dispatch(shiftUpper()) && setSelected(true);
+  }
+
+  const handleClear = () => {
+    dispatch(setLetter(""));
   }
 
   return (
@@ -25,12 +30,22 @@ function UtilKey({value}: UtilKeyProps) {
           color="primary"
           value={value}
           selected={selected}
-          onChange={handleShiftClick}
+          onChange={handleShift}
           sx={{
             textTransform: 'none',
             py: '6px'
           }}
         >{value}</ToggleButton>}
+      {value === 'clear' && 
+        <Button
+          onClick={handleClear}
+          variant="outlined"
+          color="primary"
+          sx={{
+            textTransform: 'none'
+          }}
+          >{value}</Button>
+      }
     </>
   );
 }

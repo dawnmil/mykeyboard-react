@@ -6,7 +6,7 @@ const initialState = {
   topKeys: ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
   middleKeys: ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
   bottomKeys: ["z", "x", "c", "v", "b", "n", "m"],
-  utilKeys: ["shift"]
+  utilKeys: ["shift", "clear"]
 };
 
 export const keyboardSlice = createSlice({

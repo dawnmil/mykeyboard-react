@@ -1,24 +1,21 @@
 import { Button } from '@mui/material';
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { selectKeyboard, shiftLower, shiftUpper } from '../redux/slices/keyboardSlice';
+import { useAppDispatch } from '../redux/hooks';
+import { setLetter } from '../redux/slices/displaySlice';
 
 type AlphaKeyProps = {
     value: string;
 }
 
 function AlphaKey({value}: AlphaKeyProps) {
-  const { capitalized } = useAppSelector(selectKeyboard);
   const audio = new Audio(`/audio/${value.toLowerCase()}.m4a`);
   const dispatch = useAppDispatch();
 
   const handleClick = () => {
-    if (value === 'shift') {
-        capitalized ? dispatch(shiftLower()) : dispatch(shiftUpper());
-    } else {
-        audio.play();
-    }
+    audio.play();
+    dispatch(setLetter(value));
   }
+
   return (
     <Button 
       onClick={handleClick} 
